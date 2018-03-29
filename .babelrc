@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "vue",
+    ["env", {
+      "targets": {
+        "electron": "1.8"
+      }
+    }]
+  ]
+}

@@ -1,0 +1,33 @@
+language: node_js
+node_js: lts/*
+os: osx
+osx_image: xcode9.2
+env:
+  global:
+    - APP_NAME=electron-vue-parcel-boilerplate
+    - CSC_IDENTITY_AUTO_DISCOVERY=false
+before_install:
+  - brew update
+install:
+  - yarn install
+before_script:
+  - sudo Xvfb :99 -ac -screen 0 1920x1080x8 &
+script:
+  - yarn test --coverage
+before_deploy:
+  - yarn run dist -mwl
+  - cd dist/win-unpacked && zip -9 -ry ${APP_NAME}-win-x64.zip . && cd ../..
+  - cd dist/mac && zip -9 -ry ${APP_NAME}-mac-x64.zip . && cd ../..
+  - cd dist/linux-unpacked && zip -9 -ry ${APP_NAME}-linux-x64.zip . && cd ../..
+deploy:
+  provider: releases
+  api_key:
+    secure: 0OH3wADK+aLve6UMiEe4FXtwqc1Lq9wuKC+tYLvpnDvN2i02+iA4s5mv5ySi0wQH6QIzIjPO/AWBUz6MI17y1sXOVPVGYhnrmmWVPPej8e+1n/dwX9YNfGDLg6qUSTJPe6UaKTnkJBOawgmLJsAHGo00Po5IbmWdWLRGVPEIpSHFnlqbXDuDDYVOcnYYlPMccuLN3KERwff4N0L/8glrc84A1tU2g+WBKtaJFYYD0W7GNOENOhTGGN24H0L///+C18kYlJinf3Z1CzwP4q9gtQuuMDrqghNfN7G4QS+mWWd1+5VrllO/Nyh2IrtcCXX8QPFDVEW2neEogjqE80KpcdQXNcgfhNCp1aGyp1kKP0qqaPruxSNi1pcoQeCT+5CVbF8xPRfwJuofsSrby2V7jOBQtTIFLFRE6c4Gfrv3yInIyirtlczJjd8wWJAqmBprZI36jpf3nRT1doPLHowZ6cIpqXglaH67ADv519n713L6nquAhcbsfqvmXtV9Onz24DGuVHXxJe1xv2oxJfG56fU27QN2AHcnuSBUwFP2AupR6cUWTw5YNj+vA0VX8uRF5FD2nPjEekOulg6jFpvXPZK18YR2lkKPzuvj1HubOL69sL6ZQieusQD3KGTXv0iAIV9S3MLUp+1+YyCPQGHJ0IRCFDk7IlmUtVuJOKCJnyE=
+  file:
+    - dist/win-unpacked/${APP_NAME}-win-x64.zip
+    - dist/mac/${APP_NAME}-mac-x64.zip
+    - dist/linux-unpacked/${APP_NAME}-linux-x64.zip
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master

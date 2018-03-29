@@ -1,0 +1,69 @@
+{
+  "name": "electron-vue-parcel-boilerplate",
+  "version": "0.0.0",
+  "description": "A boilerplate for Electron + Vue + Parcel.",
+  "main": "app/main/main.ts",
+  "scripts": {
+    "start": "concurrently --kill-others \"yarn parcel\" \"yarn electron\"",
+    "dist": "yarn parcel:build && build --dir --x64 --publish=never",
+    "electron": "electron .",
+    "parcel": "parcel app/renderer/index.html -p 1124 -d app/renderer/.parcel/development",
+    "parcel:build": "parcel build app/renderer/index.html --public-url ./ -d app/renderer/.parcel/production --target=electron",
+    "test": "yarn parcel:build && jest",
+    "lint": "tslint app/**/*.ts{,x}"
+  },
+  "author": "shamofu",
+  "license": "MIT",
+  "build": {
+    "files": [
+      "app/**",
+      "!app/main/tests/**",
+      "!app/renderer/**",
+      "app/renderer/.parcel/production/**"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "app/renderer/**",
+      "!app/renderer/tests/**",
+      "!app/renderer/.parcel/**"
+    ],
+    "coverageDirectory": ".coverage",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "^.*\\.vue$": "vue-jest",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "vue", "json", "node"],
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.2",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-vue": "^2.0.2",
+    "concurrently": "^3.5.1",
+    "electron": "^1.8.4",
+    "electron-builder": "^20.8.1",
+    "jest": "^22.4.3",
+    "parcel-bundler": "^1.7.0",
+    "spectron": "^3.8.0",
+    "ts-jest": "^22.4.2",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1",
+    "vue-jest": "^2.3.0",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "electron-is-dev": "^0.3.0",
+    "vue": "^2.5.16"
+  }
+}
