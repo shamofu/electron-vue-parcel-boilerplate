@@ -1,5 +1,7 @@
-import Vue from 'vue/dist/vue.min'
+import Vue from 'vue/dist/vue'
+import { createRouter } from './router'
 
-const app = new Vue({
-  template: '<div><h1>Electron + Vue + Parcel</h1></div>'
+new Vue({
+  router: createRouter(),
+  template: '<router-view />'
 }).$mount('#parcel-root')

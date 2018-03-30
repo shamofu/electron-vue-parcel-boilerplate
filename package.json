@@ -64,6 +64,7 @@
   "dependencies": {
     "app-root-path": "^2.0.1",
     "electron-is-dev": "^0.3.0",
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1"
   }
 }
