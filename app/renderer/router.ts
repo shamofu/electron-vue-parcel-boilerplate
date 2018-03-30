@@ -11,7 +11,7 @@ const Home = { template: `
     </ul>
     <h1>Electron + Vue + Parcel</h1>
   </div>
-`}
+`, title: 'Electron-Vue-Parcel-Boilerplate' }
 const Foo = { template: `
   <div>
     <ul>
@@ -20,7 +20,7 @@ const Foo = { template: `
     </ul>
     <h1>foo!</h1>
   </div>
-` }
+`, title: 'Foo' }
 const Bar = { template: `
   <div>
     <ul>
@@ -29,7 +29,7 @@ const Bar = { template: `
     </ul>
     <h1>bar!</h1>
   </div>
-` }
+`, title: 'Bar' }
 
 const routes = [
   { path: '/', component: Home },
