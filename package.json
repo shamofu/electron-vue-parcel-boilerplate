@@ -10,7 +10,7 @@
     "electron:build": "build --dir --x64 --publish=never",
     "parcel:launch": "parcel app/renderer/index.html -p 1124 -d app/renderer/.parcel/development",
     "parcel:build": "parcel build app/renderer/index.html --public-url ./ -d app/renderer/.parcel/production --target=electron",
-    "test": "run-s parcel:build \"test:jest {1}\" --",
+    "test": "run-s parcel:build \"test:jest {@}\" --",
     "test:jest": "jest",
     "lint": "tslint app/**/*.ts{,x}"
   },
