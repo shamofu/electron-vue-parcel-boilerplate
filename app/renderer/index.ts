@@ -1,8 +1,10 @@
 import Vue from 'vue/dist/vue'
+import VueRouter from 'vue-router'
 
 import titleMixin from './utils/title'
 import { createRouter } from './router'
 
+Vue.use(VueRouter)
 Vue.mixin(titleMixin)
 
 new Vue({

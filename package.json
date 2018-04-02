@@ -33,6 +33,7 @@
     "verbose": true,
     "collectCoverageFrom": [
       "app/renderer/**",
+      "!app/renderer/index.ts",
       "!app/renderer/tests/**",
       "!app/renderer/.parcel/**"
     ],

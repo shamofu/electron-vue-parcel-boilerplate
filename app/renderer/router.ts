@@ -1,8 +1,6 @@
 import Vue from 'vue/dist/vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
-
 const Home = { template: `
   <div>
     <ul>
