@@ -2,14 +2,17 @@
   "name": "electron-vue-parcel-boilerplate",
   "version": "0.0.0",
   "description": "A boilerplate for Electron + Vue + Parcel.",
-  "main": "app/main/main.ts",
+  "main": "app/main/main.js",
   "scripts": {
     "start": "run-p -r parcel:launch electron:launch",
     "dist": "run-s parcel:build \"electron:build {@}\" --",
-    "electron:launch": "electron .",
+    "electron:launch": "run-s parcel:main electron:start",
+    "electron:start": "electron .",
     "electron:build": "build --dir --x64 --publish=never",
     "parcel:launch": "parcel app/renderer/index.html -p 1124 -d app/renderer/.parcel/development",
-    "parcel:build": "parcel build app/renderer/index.html --public-url ./ -d app/renderer/.parcel/production --target=electron",
+    "parcel:build": "run-s parcel:main parcel:renderer",
+    "parcel:main": "parcel build app/main/main.ts -d ./app/main --out-file=main --target=electron",
+    "parcel:renderer": "parcel build app/renderer/index.html --public-url ./ -d app/renderer/.parcel/production",
     "test": "run-s parcel:build \"test:jest {@}\" --",
     "test:jest": "jest",
     "lint": "tslint app/**/*.ts{,x}"
@@ -19,9 +22,11 @@
   "build": {
     "files": [
       "app/**",
+      "!app/main/main.ts",
       "!app/main/tests/**",
       "!app/renderer/**",
-      "app/renderer/.parcel/production/**"
+      "app/renderer/.parcel/production/**",
+      "!app/**/*.map"
     ]
   },
   "jest": {
@@ -61,12 +66,12 @@
     "tslint": "^5.9.1",
     "typescript": "^2.8.1",
     "vue-jest": "^2.3.0",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1"
   },
   "dependencies": {
     "app-root-path": "^2.0.1",
-    "electron-is-dev": "^0.3.0",
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.1"
+    "electron-is-dev": "^0.3.0"
   }
 }
