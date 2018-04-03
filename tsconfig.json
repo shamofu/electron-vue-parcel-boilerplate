@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "jsx": "preserve",
-    "lib": ["dom", "es6"],
+    "target": "esnext",
     "sourceMap": true
   }
 }

@@ -39,9 +39,9 @@
     ],
     "coverageDirectory": ".coverage",
     "transform": {
-      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.ts$": "ts-jest",
       "^.*\\.vue$": "vue-jest",
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.js$": "babel-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
     "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "vue", "json", "node"],
@@ -66,10 +66,10 @@
     "ts-jest": "^22.4.2",
     "tslint": "^5.9.1",
     "typescript": "^2.8.1",
-    "vue-jest": "^2.3.0",
-    "vue-template-compiler": "^2.5.16",
     "vue": "^2.5.16",
-    "vue-router": "^3.0.1"
+    "vue-jest": "^2.3.0",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.16"
   },
   "dependencies": {
     "app-root-path": "^2.0.1",
