@@ -1,6 +1,6 @@
 {
   "name": "electron-vue-parcel-boilerplate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A boilerplate for Electron + Vue + Parcel.",
   "main": "app/main/main.js",
   "scripts": {
