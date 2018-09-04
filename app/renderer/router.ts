@@ -1,11 +1,10 @@
-import Vue from 'vue/dist/vue'
 import VueRouter from 'vue-router'
 
 const Home = { template: `
   <div>
     <ul>
-      <li><router-link to="/foo">/foo</router-link></li>
-      <li><router-link to="/bar">/bar</router-link></li>
+      <li><router-link to="/foo" id="foo">/foo</router-link></li>
+      <li><router-link to="/bar" id="bar">/bar</router-link></li>
     </ul>
     <h1>Electron + Vue + Parcel</h1>
   </div>
