@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue'
+import Vue from 'vue/dist/vue.min'
 import VueRouter from 'vue-router'
 
 import titleMixin from './utils/title'
