@@ -10,4 +10,4 @@ Vue.mixin(titleMixin)
 new Vue({
   router: createRouter(),
   template: '<router-view />'
-}).$mount('#parcel-root')
+}).$mount('#root')
