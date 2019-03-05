@@ -1,10 +1,13 @@
 {
   "presets": [
     "vue",
-    ["env", {
-      "targets": {
-        "electron": "3.0"
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "electron": "3.0"
+        }
       }
-    }]
+    ]
   ]
 }
