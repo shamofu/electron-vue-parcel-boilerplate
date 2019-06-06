@@ -4,7 +4,6 @@ os: osx
 osx_image: xcode10.2
 env:
   global:
-    - APP_NAME=electron-vue-parcel-boilerplate
     - CSC_IDENTITY_AUTO_DISCOVERY=false
 before_install:
   - brew update
