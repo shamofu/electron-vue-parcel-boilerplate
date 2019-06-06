@@ -22,6 +22,8 @@
   "author": "shamofu",
   "license": "MIT",
   "build": {
+    "productName": "ElectronVueParcel",
+    "appId": "org.shamofu.ElectronVueParcel",
     "files": [
       "app/**",
       "!app/main/main.ts",
@@ -29,7 +31,29 @@
       "!app/renderer/**",
       "app/renderer/.parcel/production/**",
       "!app/**/*.map"
-    ]
+    ],
+    "mac": {
+      "target": [
+        "zip"
+      ],
+      "artifactName": "${productName}-mac.${ext}"
+    },
+    "win": {
+      "target": [
+        "zip"
+      ],
+      "artifactName": "${productName}-win.${ext}"
+    },
+    "linux": {
+      "target": [
+        "zip"
+      ],
+      "category": "Development",
+      "artifactName": "${productName}-linux.${ext}"
+    },
+    "directories": {
+      "output": "release"
+    }
   },
   "jest": {
     "verbose": true,
