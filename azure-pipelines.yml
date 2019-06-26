@@ -3,7 +3,7 @@ variables:
 jobs:
   - job: Windows
     pool:
-      vmImage: win1803
+      vmImage: windows-2019
     strategy:
       matrix:
         node_8.x:
