@@ -8,7 +8,7 @@
     "release": "run-s parcel:build \"electron:build {@}\" --",
     "watch": "run-p -r parcel:watch electron:start",
     "electron:start": "nodemon --watch app/main/.parcel --exec \"electron .\"",
-    "electron:build": "build --x64 --publish=never",
+    "electron:build": "electron-builder --x64 --publish=never",
     "parcel:watch": "run-p -r main:watch renderer:watch",
     "main:watch": "parcel watch app/main/main.ts --out-dir app/main/.parcel --out-file main --target electron",
     "renderer:watch": "parcel app/renderer/index.html --port 1124 --out-dir app/renderer/.parcel/development",
@@ -79,28 +79,28 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@types/jest": "^24.0.15",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@types/jest": "^25.2.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "^25.4.0",
     "babel-preset-vue": "^2.0.2",
-    "electron": "^5.0.5",
-    "electron-builder": "^20.44.4",
-    "jest": "^24.8.0",
-    "nodemon": "^1.19.1",
+    "electron": "^8.2.3",
+    "electron-builder": "^22.5.1",
+    "jest": "^25.4.0",
+    "nodemon": "^2.0.3",
     "npm-run-all": "^4.1.5",
-    "parcel-bundler": "^1.12.3",
-    "spectron": "^7.0.0",
-    "tslint": "^5.18.0",
-    "typescript": "^3.5.2",
-    "vue": "^2.6.10",
-    "vue-jest": "^3.0.4",
-    "vue-router": "^3.0.6",
-    "vue-template-compiler": "^2.6.10"
+    "parcel-bundler": "^1.12.4",
+    "spectron": "^10.0.1",
+    "tslint": "^6.1.1",
+    "typescript": "^3.8.3",
+    "vue": "^2.6.11",
+    "vue-jest": "^3.0.5",
+    "vue-router": "^3.1.6",
+    "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
-    "app-root-path": "^2.2.1",
-    "electron-is-dev": "^1.1.0"
+    "app-root-path": "^3.0.0",
+    "electron-is-dev": "^1.2.0"
   }
 }
