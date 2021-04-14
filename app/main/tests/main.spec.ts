@@ -18,9 +18,15 @@ test('application title', async () => {
 })
 
 test('go to foo', async () => {
-  expect(await app.client.element('a#foo').click().element('h1').getText()).toBe('foo!')
+  const foo = await app.client.$('a#foo')
+  await foo.click()
+  const bar = await app.client.$('h1')
+  expect(await bar.getText()).toBe('foo!')
 })
 
 test('go to bar', async () => {
-  expect(await app.client.element('a#bar').click().element('h1').getText()).toBe('bar!')
+  const foo = await app.client.$('a#bar')
+  await foo.click()
+  const bar = await app.client.$('h1')
+  expect(await bar.getText()).toBe('bar!')
 })

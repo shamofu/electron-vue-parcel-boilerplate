@@ -2,25 +2,34 @@
   "name": "electron-vue-parcel-boilerplate",
   "version": "0.3.0",
   "description": "A boilerplate for Electron + Vue + Parcel.",
+  "author": "shamofu",
+  "license": "MIT",
+  "private": true,
   "main": "app/main/.parcel/main.js",
+  "renderer": "app/renderer/.parcel/index.html",
+  "targets": {
+    "main": {
+      "context": "electron-main"
+    },
+    "renderer": {
+      "context": "browser"
+    }
+  },
   "scripts": {
     "start": "run-s main:build electron:watch",
     "test": "run-s parcel:build \"test:jest {@}\" --",
-    "lint": "tslint app/**/*.ts{,x}",
     "release": "run-s parcel:build \"electron:build {@}\" --",
     "electron:watch": "run-p -r parcel:watch electron:start",
     "electron:start": "nodemon --watch app/main/.parcel --exec \"electron .\"",
     "electron:build": "electron-builder --x64 --publish=never",
-    "parcel:watch": "run-p -r main:watch renderer:watch",
-    "main:watch": "parcel watch app/main/main.ts --out-dir app/main/.parcel --out-file main --target electron",
-    "renderer:watch": "parcel app/renderer/index.html --port 1124 --out-dir app/renderer/.parcel/development",
     "parcel:build": "run-s main:build renderer:build",
-    "main:build": "parcel build app/main/main.ts --out-dir app/main/.parcel --out-file main --target electron",
-    "renderer:build": "parcel build app/renderer/index.html --public-url ./ --out-dir app/renderer/.parcel/production",
+    "parcel:watch": "run-p -r main:watch renderer:watch",
+    "main:build": "parcel build app/main/main.ts --target main",
+    "main:watch": "parcel watch app/main/main.ts --target main",
+    "renderer:build": "parcel build app/renderer/index.html --public-url ./ --target renderer",
+    "renderer:watch": "parcel serve app/renderer/index.html --port 1124 --target renderer",
     "test:jest": "jest"
   },
-  "author": "shamofu",
-  "license": "MIT",
   "build": {
     "productName": "ElectronVueParcel",
     "appId": "org.shamofu.ElectronVueParcel",
@@ -29,7 +38,7 @@
       "!app/main/main.ts",
       "!app/main/tests/**",
       "!app/renderer/**",
-      "app/renderer/.parcel/production/**",
+      "app/renderer/.parcel/**",
       "!app/**/*.map"
     ],
     "mac": {
@@ -65,7 +74,7 @@
     ],
     "transform": {
       "^.+\\.tsx?$": "babel-jest",
-      "^.*\\.vue$": "vue-jest"
+      "^.+\\.vue$": "vue-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
     "moduleFileExtensions": [
@@ -78,29 +87,27 @@
       "node"
     ]
   },
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@types/jest": "^25.2.1",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^25.4.0",
-    "babel-preset-vue": "^2.0.2",
-    "electron": "^8.2.3",
-    "electron-builder": "^22.5.1",
-    "jest": "^25.4.0",
-    "nodemon": "^2.0.3",
-    "npm-run-all": "^4.1.5",
-    "parcel-bundler": "^1.12.4",
-    "spectron": "^10.0.1",
-    "tslint": "^6.1.1",
-    "typescript": "^3.8.3",
-    "vue": "^2.6.11",
-    "vue-jest": "^3.0.5",
-    "vue-router": "^3.1.6",
-    "vue-template-compiler": "^2.6.11"
-  },
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "electron-is-dev": "^1.2.0"
+    "electron-is-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@types/jest": "^26.0.22",
+    "@vue/test-utils": "^1.1.4",
+    "babel-jest": "^26.6.3",
+    "electron": "^12.0.4",
+    "electron-builder": "^22.10.5",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.0.0-beta.2",
+    "spectron": "^14.0.0",
+    "typescript": "^4.2.4",
+    "vue": "^2.6.12",
+    "vue-jest": "^3.0.7",
+    "vue-router": "^3.5.1",
+    "vue-template-compiler": "^2.6.12"
   }
 }
