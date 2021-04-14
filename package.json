@@ -4,7 +4,7 @@
   "description": "A boilerplate for Electron + Vue + Parcel.",
   "author": "shamofu",
   "license": "MIT",
-  "private": true,
+  "private": "true",
   "main": "app/main/.parcel/main.js",
   "renderer": "app/renderer/.parcel/index.html",
   "targets": {
